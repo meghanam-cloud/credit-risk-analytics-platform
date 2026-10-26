@@ -1,0 +1,40 @@
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyd
+.pytest_cache/
+.venv/
+venv/
+env/
+
+# Local environment variables and credentials
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+secrets/
+credentials/
+
+# Local data files
+data/raw/
+data/processed/
+data/interim/
+data/private/
+*.csv
+*.parquet
+*.feather
+
+# Local database and temporary files
+*.sqlite
+*.sqlite3
+*.db
+*.log
+*.tmp
+
+# Editor and operating system
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
