@@ -31,6 +31,8 @@ The dataset contains loan-level information. Raw data files are intentionally ex
 
 ## Architecture
 
+![Credit Risk Analytics Platform Architecture](docs/architecturee.png)
+
 ```text
 Freddie Mac Sample Files
           |
@@ -51,6 +53,17 @@ Streamlit Dashboard
 ```
 
 Automated tests and data-quality checks help validate the project components and dataset consistency.
+
+## Dashboard Screenshots
+
+### Dashboard Overview
+![Dashboard Overview](docs/screenshots/dashboard-overview.png)
+
+### Delinquency Trends
+![Delinquency Trends](docs/screenshots/delinquency-trends.png)
+
+### Monthly Risk Summary
+![Monthly Risk Summary](docs/screenshots/monthly-risk-summary.png)
 
 ## Main Components
 
@@ -86,9 +99,10 @@ The Streamlit dashboard includes:
 
 The delinquency rates describe the records and calculations used by this project; they should not automatically be interpreted as unique-loan default probabilities.
 
+
 ### Documentation — `docs/`
 
-Contains schema documentation for the Freddie Mac sample dataset.
+Contains the project architecture diagram, Streamlit dashboard screenshots, and schema documentation for the Freddie Mac sample dataset.
 
 ### Automated Tests — `tests/`
 
@@ -130,13 +144,18 @@ If PowerShell blocks activation, use the Python executable directly or follow yo
 
 ### 2. Install dependencies
 
-Install the packages required by your scripts and dashboard. If a `requirements.txt` file is provided in a future version, use:
+Activate the virtual environment created in Step 1, then install the project dependencies:
 
 ```powershell
+.\.venv\Scripts\Activate.ps1
 python -m pip install -r requirements.txt
+python -m pip check
 ```
 
-Otherwise, install the dependencies listed in the source code and verify them in your environment.
+The final command checks for dependency conflicts. Ideally, it should report `No broken requirements found.`
+
+If you open a new terminal later, activate `.venv` again before running the project.
+
 
 ### 3. Configure PostgreSQL
 
