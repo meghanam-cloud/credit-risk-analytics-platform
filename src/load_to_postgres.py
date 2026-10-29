@@ -31,13 +31,12 @@ def main():
 
     if not password:
         password = getpass.getpass("PostgreSQL password: ")
-
     with psycopg.connect(
-        host="localhost",
-        port=5432,
-        dbname="credit_risk_db",
-        user="postgres",
-        password=password,
+    host=os.getenv("PGHOST", "localhost"),
+    port=int(os.getenv("PGPORT", "5432")),
+    dbname=os.getenv("PGDATABASE", "credit_risk_db"),
+    user=os.getenv("PGUSER", "postgres"),
+    password=password,
     ) as conn:
         with conn.cursor() as cur:
             for item in FILES:

@@ -1,11 +1,11 @@
-
+import os
 import getpass
 import psycopg
 
-DB_HOST = "localhost"
-DB_PORT = 5432
-DB_NAME = "credit_risk_db"
-DB_USER = "postgres"
+DB_HOST = os.getenv("PGHOST", "localhost")
+DB_PORT = int(os.getenv("PGPORT", "5432"))
+DB_NAME = os.getenv("PGDATABASE", "credit_risk_db")
+DB_USER = os.getenv("PGUSER", "postgres")
 
 password = getpass.getpass("Enter your PostgreSQL password: ")
 

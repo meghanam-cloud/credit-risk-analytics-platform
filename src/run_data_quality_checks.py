@@ -4,10 +4,10 @@ import getpass
 import psycopg
 
 
-DB_HOST = "localhost"
-DB_PORT = 5432
-DB_NAME = "credit_risk_db"
-DB_USER = "postgres"
+DB_HOST = os.getenv("PGHOST", "localhost")
+DB_PORT = int(os.getenv("PGPORT", "5432"))
+DB_NAME = os.getenv("PGDATABASE", "credit_risk_db")
+DB_USER = os.getenv("PGUSER", "postgres")
 
 EXPECTED_ORIGINATION_ROWS = 50_000
 EXPECTED_PERFORMANCE_ROWS = 2_517_857

@@ -80,9 +80,9 @@ Automated tests and data-quality checks help validate the project components and
 
 ### SQL — `sql/`
 
-- `01_create_staging_tables.sql` — creates staging tables.
-- `05_monthly_delinquency_queries.sql` — contains monthly delinquency analysis queries.
-- `06_refresh_analytics.sql` — refreshes the analytics tables.
+- `01_create_staging_tables.sql` — creates the staging tables.
+- `05_exploration_notes.sql` — exploratory queries used during development; not the production refresh script.
+- `06_refresh_analytics.sql` — the production analytics refresh script executed by `src/run_pipeline.py`.
 
 ### Dashboard — `app.py`
 
@@ -163,6 +163,17 @@ Create a local database named `credit_risk_db`, configure a PostgreSQL user, and
 
 Review the source scripts for the expected connection settings before running the loader. Supply the database password through the `PGPASSWORD` environment variable or the prompt provided by the scripts. Never commit database credentials.
 
+The database connection settings can optionally be configured using environment variables. If these variables are not set, the project uses the defaults shown below.
+
+| Variable | Default |
+|---|---|
+| `PGHOST` | `localhost` |
+| `PGPORT` | `5432` |
+| `PGDATABASE` | `credit_risk_db` |
+| `PGUSER` | `postgres` |
+
+The database password is read from `PGPASSWORD` when set; otherwise, scripts that support interactive password entry prompt for it. Never commit passwords or other credentials.
+
 ### 4. Load and validate the data
 
 After configuring the database and placing the authorized source files in the expected local data directory, review the pipeline configuration and run:
@@ -212,7 +223,6 @@ Before publishing:
 
 - Add stronger unit tests that exercise the actual validation functions.
 - Add database integration tests with controlled test data.
-- Make pipeline configuration environment-driven.
 - Add structured logging and clearer failure reporting.
 - Document the exact source-file format and loading assumptions.
 - Consider cloud architecture mappings as a future design exercise without deploying paid services.

@@ -41,10 +41,10 @@ def refresh_analytics(password: str) -> None:
 
     # psycopg executes the SQL in a transaction.
     with psycopg.connect(
-        host="localhost",
-        port=5432,
-        dbname="credit_risk_db",
-        user="postgres",
+        host=os.getenv("PGHOST", "localhost"),
+        port=int(os.getenv("PGPORT", "5432")),
+        dbname=os.getenv("PGDATABASE", "credit_risk_db"),
+        user=os.getenv("PGUSER", "postgres"),
         password=password,
     ) as conn:
         with conn.cursor() as cur:

@@ -1,4 +1,4 @@
-
+-- Exploratory queries used during development. The production refresh script is 06_refresh_analytics.sql.
 CREATE SCHEMA IF NOT EXISTS staging;
 
 -- Freddie Mac origination file: 31 fields
